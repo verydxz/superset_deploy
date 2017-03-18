@@ -1,0 +1,8 @@
+*.pyc
+*.sqlite
+
+celery.d/*
+!celery.d/.keep
+
+supervisor.d/*
+!supervisor.d/.keep
