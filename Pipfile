@@ -1,8 +1,14 @@
 [[source]]
-url = "https://mirrors.aliyun.com/pypi/simple/"
 verify_ssl = true
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+name = "pypi"
 
 [packages]
-superset = "*"
 supervisor = "*"
-PyMySQL = "*"
+superset = "*"
+
+
+[requires]
+python_version = "2.7"
+
+[dev-packages]

@@ -3,12 +3,13 @@
 ### Initiate
 - `pip install pipenv`
 - `pipenv --two && pipenv shell` (as the time of writing, superset is more stable on py2)
-- `pipenv install`
+- `pipenv install` (which will use the info in `Pipfile.lock`)
+- install [database packages](http://superset.apache.org/installation.html#database-dependencies) you need
 
 ### Run
 - `supervisord`
 - See `supervisord.conf` and `superset_config.py` for more
-- BTW, you may want to [initialize superset](http://airbnb.io/superset/installation.html#superset-installation-and-initialization) first
+- BTW, you may want to [initialize superset](http://superset.apache.org/installation.html#superset-installation-and-initialization) first
 
 ### Manage
 - `supervisorctl`
