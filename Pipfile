@@ -4,8 +4,10 @@ url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 name = "pypi"
 
 [packages]
+
 supervisor = "*"
 superset = "*"
+redis = "*"
 
 
 [requires]

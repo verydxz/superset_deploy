@@ -16,6 +16,7 @@
 - For example, `supervisorctl stop all`
 
 ### Caveat
+- this superset config assume `redis` running at `localhost:6379` with no password
 - `Pipfile.lock` is a workable version, but if you want to use newer versions, just delete it before `pipenv install`
 - `superset runserver` calls gunicorn, sometimes the sub group processes will not be stopped when you ask supervisor to stop superset process
   - Manual: `ps aux | grep gunicorn`, find the pid, and `kill -9 <pid>`

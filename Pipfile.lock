@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2957cca4aa1d0fd8da60240d1c68ee253a9f6267e8f90d6470be3181b51576cb"
+            "sha256": "4da2d21943f8b7802b585936fd5acd20c5739b0c10fc68920dc4dc99abfe1166"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -244,6 +244,10 @@
         "pytz": {
             "hashes": [],
             "version": "==2017.3"
+        },
+        "redis": {
+            "hashes": [],
+            "version": "==2.10.6"
         },
         "requests": {
             "hashes": [],

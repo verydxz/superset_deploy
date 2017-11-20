@@ -3,8 +3,6 @@ reference: https://github.com/airbnb/superset/blob/master/superset/config.py
 """
 
 import os
-from werkzeug.contrib.cache import FileSystemCache
-
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(os.path.expanduser('~'), '.superset')
 if not os.path.exists(DATA_DIR):
@@ -18,12 +16,24 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoidmVyeWR4eiIsImEiOiJjamE4OXQ2eXgwNThiMzNxODlkdzV2YjR
 
 SUPERSET_WORKERS = 2
 
+# celery workers for sqllab
 SUPERSET_CELERY_WORKERS = 8
 class CeleryConfig(object):
-    BROKER_URL = 'sqla+sqlite:///celery.d/celerydb.sqlite'
+    BROKER_URL = 'redis://localhost:6379/1'
     CELERY_IMPORTS = ('superset.sql_lab', )
-    CELERY_RESULT_BACKEND = 'db+sqlite:///celery.d/celery_results.sqlite'
+    CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
     CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
 CELERY_CONFIG = CeleryConfig
 
-RESULTS_BACKEND = FileSystemCache('/tmp/sqllab_cache', default_timeout=60)
+# result backend for sqllab
+import werkzeug.contrib.cache.RedisCache
+RESULTS_BACKEND = werkzeug.contrib.cache.RedisCache(
+    host='localhost', port=6379, db=2, key_prefix='superset_results', default_timeout=3600)
+
+# cache for reports
+CACHE_CONFIG = {
+    'CACHE_TYPE': 'redis',
+    'CACHE_KEY_PREFIX': 'superset_cache',
+    'CACHE_REDIS_URL': 'redis://localhost:6379/3'
+}
+CACHE_DEFAULT_TIMEOUT = 300
