@@ -6,8 +6,8 @@ name = "pypi"
 [packages]
 
 supervisor = "*"
-superset = "*"
 redis = "*"
+superset = "*"
 
 
 [requires]

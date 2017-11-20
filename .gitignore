@@ -1,5 +1,6 @@
 *.pyc
 *.sqlite
+superset.db
 
 celery.d/*
 !celery.d/.keep

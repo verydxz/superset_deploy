@@ -18,6 +18,7 @@ SUPERSET_WORKERS = 2
 
 # celery workers for sqllab
 SUPERSET_CELERY_WORKERS = 8
+
 class CeleryConfig(object):
     BROKER_URL = 'redis://localhost:6379/1'
     CELERY_IMPORTS = ('superset.sql_lab', )
@@ -26,7 +27,7 @@ class CeleryConfig(object):
 CELERY_CONFIG = CeleryConfig
 
 # result backend for sqllab
-import werkzeug.contrib.cache.RedisCache
+import werkzeug.contrib.cache
 RESULTS_BACKEND = werkzeug.contrib.cache.RedisCache(
     host='localhost', port=6379, db=2, key_prefix='superset_results', default_timeout=3600)
 
